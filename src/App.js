@@ -1,22 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import Modal from "./Model/Model";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from "./Login/Login";
+import ProductList from "./ProductList/ProductsList";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  return (
-    <div className="App">
-      <h1>Popup Modal</h1>
-      <button onClick={openModal} className="button">
-        Click Me
-      </button>
-      {showModal ? <Modal setShowModal={setShowModal} /> : null}
-    </div>
+   return (
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login/>} ></Route>
+          <Route path="/products" element={<ProductList/>} ></Route>
+        </Routes>
+    </BrowserRouter>
   );
 }
 
